@@ -1,3 +1,4 @@
+import { HomeComponent } from './pages/home/home.component';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
@@ -9,6 +10,7 @@ import { ListComponent } from './pages/list/list.component';
 const routes: Routes = [
   {
     path:'',
+    component: HomeComponent,
     children: [
       { path: 'list',     component: ListComponent },
       { path: 'add',      component: AddComponent },
