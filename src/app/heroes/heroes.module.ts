@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeroesRoutingModule } from './heroes-routing.module';
 import { RouterModule } from '@angular/router';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AddComponent } from './pages/add/add.component';
 import { SearchComponent } from './pages/search/search.component';
@@ -22,7 +23,8 @@ import { ListComponent } from './pages/list/list.component';
   imports: [
     CommonModule,
     HeroesRoutingModule,
-    RouterModule
+    RouterModule,
+    FlexLayoutModule
   ]
 })
 export class HeroesModule { }
