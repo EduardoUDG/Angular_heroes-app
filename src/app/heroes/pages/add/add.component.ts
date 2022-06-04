@@ -10,8 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class AddComponent implements OnInit {
 
 
-  constructor( private _activatedRoute: ActivatedRoute  ) {
-  }
+  constructor( private _activatedRoute: ActivatedRoute  ) {}
 
   ngOnInit(): void {
     this._activatedRoute.params
