@@ -7,14 +7,12 @@ import { HeroesService } from '../../services/heroes.service';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styles: [
-  ]
 })
 export class SearchComponent implements OnInit {
 
   termino:string = '';
   heroes: Hero[] = [];
-  heroSelected!: Hero;
+  heroSelected: Hero | undefined;
 
   constructor(
     private _heroService: HeroesService
@@ -24,7 +22,7 @@ export class SearchComponent implements OnInit {
 
 
   searching() {
-    this._heroService.getSuggestions( this.termino )
+    this._heroService.getSuggestions( this.termino.trim() )
       .subscribe({
         next: ( heroes ) => this.heroes = heroes
       });
@@ -32,6 +30,11 @@ export class SearchComponent implements OnInit {
 
 
   optionSelected( event: MatAutocompleteSelectedEvent ) {
+    if( !event.option.value ) {
+      this.heroSelected = undefined;
+      return;
+    }
+
     const hero: Hero = event.option.value;
     this.termino = hero.superhero;
     this._heroService.getHeroById( hero.id! )
