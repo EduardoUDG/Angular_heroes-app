@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeroesRoutingModule } from './heroes-routing.module';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule } from '@angular/forms';
+
+import { HeroesRoutingModule } from './heroes-routing.module';
 import { MaterialModule } from './../material/material.module';
 
 import { AddComponent } from './pages/add/add.component';
@@ -30,6 +32,7 @@ import { ImagePipe } from './pipes/image.pipe';
     HeroesRoutingModule,
     RouterModule,
     FlexLayoutModule,
+    FormsModule,
     MaterialModule
   ]
 })
