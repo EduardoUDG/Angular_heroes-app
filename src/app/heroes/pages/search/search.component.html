@@ -1,23 +1,33 @@
 <div fxLayout="column">
+
   <div>
     <h3>Heroes search</h3>
     <mat-divider></mat-divider>
   </div>
+
   <div>
     <h3>Search</h3>
     <mat-form-field>
       <input type="text"
-             placeholder="Hero name"
-             aria-label="Number"
-             matInput
-             [(ngModel)]="termino"
-             [matAutocomplete]="auto"
-             (input)="searching()">
-      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            placeholder="Hero name"
+            aria-label="Number"
+            matInput
+            [(ngModel)]="termino"
+            [matAutocomplete]="auto"
+            (input)="searching()">
+      <mat-autocomplete
+            autoActiveFirstOption
+            #auto="matAutocomplete"
+            (optionSelected)="optionSelected( $event )">
         <mat-option *ngFor="let hero of heroes" [value]="hero">
           {{ hero.superhero }}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
   </div>
+
+  <div>
+    <pre>{{ heroSelected | json }}</pre>
+  </div>
+
 </div>

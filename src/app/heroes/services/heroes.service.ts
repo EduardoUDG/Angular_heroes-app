@@ -21,4 +21,8 @@ export class HeroesService {
     return this.http.get<Hero>(`${this._BASE_URL}/heroes/${id}`);
   }
 
+  getSuggestions( term: string ):Observable<Hero[]> {
+    return this.http.get<Hero[]>(`${this._BASE_URL}/heroes?q=${ term }&_limit=6`);
+  }
+
 }
