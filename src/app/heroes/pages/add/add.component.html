@@ -1,14 +1,19 @@
 <h1>Add hero <small>asd</small></h1>
 
-<div fxLayout="row" fxLayoutGap="40px">
+<div fxLayout="row"
+     fxLayoutGap="40px"
+     fxLayout.xs="column">
 
   <div fxFlex="50" fxLayout="column">
     <!-- Group 2 inputs ( 50% ) -->
-    <div fxLayout="row" fxLayoutGap="20px">
+    <div fxLayout="row"
+         fxLayout.xs="column"
+         fxLayoutGap="20px">
       <mat-form-field fxFlex="100">
         <mat-label>Super Hero</mat-label>
         <input matInput
                type="text"
+               [(ngModel)]="hero.superhero"
                required>
       </mat-form-field>
 
@@ -16,6 +21,7 @@
         <mat-label>Alter Ego</mat-label>
         <input matInput
                type="text"
+               [(ngModel)]="hero.alter_ego"
                required>
       </mat-form-field>
     </div>
@@ -24,6 +30,7 @@
       <mat-label>First apparition</mat-label>
       <input matInput
              type="text"
+             [(ngModel)]="hero.first_appearance"
              required>
     </mat-form-field>
 
@@ -31,13 +38,16 @@
       <mat-label>Characters</mat-label>
       <input matInput
              type="text"
+             [(ngModel)]="hero.characters"
              required>
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Publusher</mat-label>
-      <mat-select name="publusher">
-        <mat-option *ngFor="let publusher of publushers" [value]="publusher.id">
+    <mat-form-field>
+      <mat-label>Publisher</mat-label>
+      <mat-select [(ngModel)]="hero.publisher"
+                  required>
+        <mat-option *ngFor="let publusher of publushers"
+                    [value]="publusher.id">
           {{ publusher.desc}}
         </mat-option>
       </mat-select>
@@ -47,17 +57,20 @@
       <mat-label>Photo URL</mat-label>
       <input matInput
              type="text"
+             [(ngModel)]="hero.alt_img"
              required>
     </mat-form-field>
     <br>
-    <button mat-raised-button color="primary">
+    <button mat-raised-button
+            color="primary"
+            (click)="saveHero()">
       <mat-icon>edit</mat-icon>
       Save
     </button>
   </div>
 
   <div fxFlex="50">
-    <img [src]="hero | image" alt="">
+    <img [src]="hero | image" alt="photo">
   </div>
 
 </div>

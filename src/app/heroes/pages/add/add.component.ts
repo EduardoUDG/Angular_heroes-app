@@ -1,16 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Hero, Publisher } from '../../interfaces/hero.interface';
+import { HeroesService } from '../../services/heroes.service';
 
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
-  styles: [
-  ]
 })
 export class AddComponent implements OnInit {
 
-  heroCreated: string = '';
   publushers = [
     {
       id: 'Dc Comics',
@@ -31,15 +28,20 @@ export class AddComponent implements OnInit {
     alt_img: '',
   };
   constructor(
-    private _activatedRoute: ActivatedRoute
+    private _heroesService: HeroesService
   ) {}
 
   ngOnInit(): void {
-    this._activatedRoute.params
+  }
+
+  saveHero() {
+    if( this.hero.superhero.trim().length === 0 ) {
+      return;
+    }
+    this._heroesService.createHero( this.hero )
       .subscribe({
-        next: ({ id }) => {
-          console.log( id );
-        }
+        next: ( response ) => console.log( response )
       })
   }
+
 }
