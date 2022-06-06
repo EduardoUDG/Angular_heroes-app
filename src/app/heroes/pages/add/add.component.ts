@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Hero, Publisher } from '../../interfaces/hero.interface';
 
 @Component({
   selector: 'app-add',
@@ -9,8 +10,29 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AddComponent implements OnInit {
 
+  heroCreated: string = '';
+  publushers = [
+    {
+      id: 'Dc Comics',
+      desc: 'Dc - Comics'
+    },
+    {
+      id: 'Marvel Comics',
+      desc: 'Marvel  - Comics'
+    }
+  ];
 
-  constructor( private _activatedRoute: ActivatedRoute  ) {}
+  hero: Hero = {
+    superhero: '',
+    alter_ego: '',
+    characters: '',
+    first_appearance: '',
+    publisher: Publisher.DCComics,
+    alt_img: '',
+  };
+  constructor(
+    private _activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this._activatedRoute.params

@@ -1,1 +1,63 @@
-<p>add works!</p>
+<h1>Add hero <small>asd</small></h1>
+
+<div fxLayout="row" fxLayoutGap="40px">
+
+  <div fxFlex="50" fxLayout="column">
+    <!-- Group 2 inputs ( 50% ) -->
+    <div fxLayout="row" fxLayoutGap="20px">
+      <mat-form-field fxFlex="100">
+        <mat-label>Super Hero</mat-label>
+        <input matInput
+               type="text"
+               required>
+      </mat-form-field>
+
+      <mat-form-field fxFlex="100">
+        <mat-label>Alter Ego</mat-label>
+        <input matInput
+               type="text"
+               required>
+      </mat-form-field>
+    </div>
+    <!-- Input 100% -->
+    <mat-form-field>
+      <mat-label>First apparition</mat-label>
+      <input matInput
+             type="text"
+             required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Characters</mat-label>
+      <input matInput
+             type="text"
+             required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Publusher</mat-label>
+      <mat-select name="publusher">
+        <mat-option *ngFor="let publusher of publushers" [value]="publusher.id">
+          {{ publusher.desc}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Photo URL</mat-label>
+      <input matInput
+             type="text"
+             required>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary">
+      <mat-icon>edit</mat-icon>
+      Save
+    </button>
+  </div>
+
+  <div fxFlex="50">
+    <img [src]="hero | image" alt="">
+  </div>
+
+</div>

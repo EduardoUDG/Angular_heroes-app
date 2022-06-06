@@ -5,7 +5,7 @@ export interface Hero {
   alter_ego:        string;
   first_appearance: string;
   characters:       string;
-  text:             string;
+  text?:             string;
   alt_img?: string; // http://adsffafaafsad.com/img.png
 }
 
