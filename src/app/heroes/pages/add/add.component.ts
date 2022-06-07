@@ -8,6 +8,12 @@ import { HeroesService } from '../../services/heroes.service';
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
+  styles: [`
+    img {
+      width: 100%;
+      border-radius: 10px;
+    }
+  `]
 })
 export class AddComponent implements OnInit {
 
@@ -37,6 +43,10 @@ export class AddComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
+    if( !this._router.url.includes('edit') ) {
+      return;
+    }
     this._activatedRoute.params
       .pipe(
         switchMap( ({id}) => this._heroesService.getHeroById(id) )
