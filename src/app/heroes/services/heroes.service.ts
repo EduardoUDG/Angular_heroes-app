@@ -18,7 +18,7 @@ export class HeroesService {
   }
 
   getHeroById( id:string ):Observable<Hero> {
-    return this.http.get<Hero>(`${this._BASE_URL}/heroes/${id}`);
+    return this.http.get<Hero>(`${this._BASE_URL}/heroes/${ id }`);
   }
 
   getSuggestions( term: string ):Observable<Hero[]> {
@@ -30,6 +30,11 @@ export class HeroesService {
   }
 
   updateHero( hero: Hero ):Observable<Hero> {
-    return this.http.put<Hero>(`${this._BASE_URL}/heroes/${hero.id}`, hero );
+    return this.http.put<Hero>(`${this._BASE_URL}/heroes/${ hero.id }`, hero );
   }
+
+  deleteHero( id: string ):Observable<any> {
+    return this.http.delete<any>(`${this._BASE_URL}/heroes/${ id }`);
+  }
+
 }
