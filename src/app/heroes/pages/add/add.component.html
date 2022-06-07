@@ -46,12 +46,12 @@
       <mat-label>Publisher</mat-label>
       <mat-select [(ngModel)]="hero.publisher"
                   required>
-        <mat-option *ngFor="let publusher of publushers"
-                    [value]="publusher.id">
-          {{ publusher.desc}}
-        </mat-option>
+          <mat-option *ngFor="let publisher of publishers"
+                      [value]="publisher.id">
+              {{ publisher.desc }}
+          </mat-option>
       </mat-select>
-    </mat-form-field>
+  </mat-form-field>
 
     <mat-form-field>
       <mat-label>Photo URL</mat-label>
