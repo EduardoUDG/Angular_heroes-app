@@ -19,8 +19,8 @@ export class AddComponent implements OnInit {
 
   publishers = [
     {
-      id: 'Dc Comics',
-      desc: 'Dc - Comics'
+      id: 'DC Comics',
+      desc: 'DC - Comics'
     },
     {
       id: 'Marvel Comics',
