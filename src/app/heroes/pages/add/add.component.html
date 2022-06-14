@@ -1,4 +1,8 @@
-<h1>Add hero <small>asd</small></h1>
+<h1>
+  {{ !hero.id ? 'Create' : 'Edit' }}
+  hero
+  <small>{{ hero.superhero }}</small>
+</h1>
 
 <div fxLayout="row"
      fxLayoutGap="40px"
