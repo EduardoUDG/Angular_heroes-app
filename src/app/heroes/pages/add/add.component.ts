@@ -80,16 +80,21 @@ export class AddComponent implements OnInit {
   }
 
   deleteHero() {
-    this._dialog.open( ConfirmDialogComponent, {
-      width: '250px'
+    const dialog = this._dialog.open( ConfirmDialogComponent, {
+      width: '250px',
+      data: { ...this.hero }
     })
 
-    // this._heroesService.deleteHero( this.hero.id! )
-    //   .subscribe({
-    //     next: () => {
-    //       this._router.navigate(['/heroes'])
-    //     }
-    //   })
+    dialog.afterClosed().subscribe(
+      (result) => {
+        if( result ) {
+          this._heroesService.deleteHero( this.hero.id! )
+            .subscribe({
+              next: () => this._router.navigate(['/heroes'])
+            });
+        }
+      }
+    )
   }
 
   showSnackBar( msg: string ):void {

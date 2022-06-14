@@ -67,7 +67,7 @@
             color="primary"
             (click)="saveHero()">
       <mat-icon>edit</mat-icon>
-      Save hero
+      {{ !hero.id ? 'Create' : 'Edit' }} hero
     </button>
     <span class="spacer"></span>
     <button *ngIf="hero.id"
