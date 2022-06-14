@@ -1,0 +1,18 @@
+<h1>Are you sure?</h1>
+<hr>
+<p>
+  You are sure to delete to ABC
+  <br>
+  Do you want to continue?
+</p>
+<div>
+  <button mat-button
+          (click)="delete()"
+          color="warn">
+    Yes, delete!
+  </button>
+  <button mat-button
+          (click)="close()">
+    Cancel
+  </button>
+</div>

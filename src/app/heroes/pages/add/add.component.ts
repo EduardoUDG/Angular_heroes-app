@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
 import { switchMap } from 'rxjs';
 
 import { Hero, Publisher } from '../../interfaces/hero.interface';
 import { HeroesService } from '../../services/heroes.service';
+import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-add',
@@ -41,7 +43,8 @@ export class AddComponent implements OnInit {
     private _heroesService: HeroesService,
     private _activatedRoute: ActivatedRoute,
     private _router: Router,
-    private _snackBar : MatSnackBar
+    private _snackBar : MatSnackBar,
+    private _dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -77,12 +80,16 @@ export class AddComponent implements OnInit {
   }
 
   deleteHero() {
-    this._heroesService.deleteHero( this.hero.id! )
-      .subscribe({
-        next: () => {
-          this._router.navigate(['/heroes'])
-        }
-      })
+    this._dialog.open( ConfirmDialogComponent, {
+      width: '250px'
+    })
+
+    // this._heroesService.deleteHero( this.hero.id! )
+    //   .subscribe({
+    //     next: () => {
+    //       this._router.navigate(['/heroes'])
+    //     }
+    //   })
   }
 
   showSnackBar( msg: string ):void {
