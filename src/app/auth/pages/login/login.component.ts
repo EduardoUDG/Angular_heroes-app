@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,12 +9,20 @@ import { Router } from '@angular/router';
 export class LoginComponent {
 
   constructor(
-    private _router: Router
+    private _router: Router,
+    private _authService: AuthService
   ) { }
 
 
   login():void {
-    this._router.navigate(['/heroes'])
+
+    this._authService.login()
+      .subscribe({
+        next: (auth) => {
+          if (auth.id) { this._router.navigate(['/heroes']) }
+        }
+      })
+
   }
 
 }
