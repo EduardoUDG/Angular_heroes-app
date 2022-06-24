@@ -15,14 +15,16 @@ export class LoginComponent {
 
 
   login():void {
-
     this._authService.login()
       .subscribe({
         next: (auth) => {
           if (auth.id) { this._router.navigate(['/heroes']) }
         }
       })
+  }
 
+  loginWithoutAuth():void {
+    this._router.navigate(['/heroes'])
   }
 
 }
